@@ -96,3 +96,12 @@ describe('Str.sanitizeURL', () => {
         expect(Str.sanitizeURL('HTtp://FOO.com/blah_BLAH')).toBe('http://foo.com/blah_BLAH');
     });
 });
+
+describe('Str.isBlob', () => {
+    it('Correctly identifies blob type URLs', () => {
+        expect(Str.isBlob('blob:http://example.com/550e8400-e29b-41d4-a716-446655440000')).toBeTruthy();
+        expect(Str.isBlob('blob:http://192.168.0.136/85017e84-0f2d-4791-b563-240794abdcbf')).toBeTruthy();
+        expect(Str.isBlob('blob:https://192.16.1.136/XXX')).toBeTruthy();
+        expect(Str.isBlob('blob:http://192.16.254.136/85017e84-0f2d-4791-b563-240794abdcbf')).toBeTruthy();
+    });
+});
